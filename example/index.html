@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <style>
+        p {
+            -webkit-transition: font-size 0.5s, padding 0.5s, height 0.5s;
+            -moz-transition:    font-size 0.5s, padding 0.5s, height 0.5s;
+            -ms-transition:     font-size 0.5s, padding 0.5s, height 0.5s;
+            -o-transition:      font-size 0.5s, padding 0.5s, height 0.5s;
+            transition:         font-size 0.5s, padding 0.5s, height 0.5s;
+
+            background-color: #666666;
+            color: #FFFFFF;
+        }
+        .super-size {
+            font-size: 36px;
+            padding: 50px;
+        }
+        .shorty {
+            height: 100%;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+
+<body>
+    <div style="height: 100px;">
+
+        <p class="mutant-transition" data-mutant-attributes="padding,height,font-size">
+            This is an example
+        </p>
+    </div>
+    <a href="#" class="toggle-size">Toggle Size</a>
+    <script src="../src/mutant-transition.js"></script>
+    <!-- This is just needed for the example -->
+    <script>
+        $('.toggle-size').click(function(){
+           $('.mutant-transition').toggleClass('shorty');
+        });
+    </script>
+</body>
+</html>
