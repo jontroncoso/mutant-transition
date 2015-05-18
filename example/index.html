@@ -39,12 +39,13 @@
         </div>
     </div>
     <a href="#" class="toggle-size">Toggle Size</a>
-    <p>mutant-transition works with anything. you can even inspect element and change the classes (try 'parent-height') and it will detect those changes</p>
+    <p>Since mutant-transition detects changes in the DOM, it doesn't require any special Javascript methods. Just change the DOM how you prefer. You can even "inspect element" and change the classes (try 'parent-height') and it will detect those changes</p>
     <script src="../src/mutant-transition.js"></script>
     <!-- This is just needed for the example -->
     <script>
-        $('.toggle-size').click(function(){
+        $('.toggle-size').click(function(e){
            $('.example').toggleClass('parent-height');
+            e.preventDefault();
         });
 
     </script>

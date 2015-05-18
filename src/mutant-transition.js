@@ -1,20 +1,20 @@
 if(typeof window.MutationObserver == 'function')
 {
-  observer = new MutationObserver(function(mutations){
+  window.observer = new MutationObserver(function(mutations){
     // The combination of the following 2 lines prevents other, lets call them "threads",
     // from repeatedly calling this code in response to class changes and what have you,
     // resulting in an infinite loop.
-    if(observer.ignore == true)return false;
-    observer.ignore = true;
+    if(window.observer.ignore == true)return false;
+    window.observer.ignore = true;
 
-    $('.mutant-transition').each(observer.mutate);
+    $('.mutant-transition').each(window.observer.mutate);
 
     setTimeout(function(){
-      observer.ignore = false
+      window.observer.ignore = false
     }, 50);
   });
-  observer.ignore = false;
-  observer.mutate = function(i,mutant){
+  window.observer.ignore = false;
+  window.observer.mutate = function(i,mutant){
     var $mutant = $(mutant);
     var $clone;
     var cssAttr = {};
@@ -37,13 +37,15 @@ if(typeof window.MutationObserver == 'function')
     $clone.remove();
     $mutant.css(cssAttr);
   };
-  $('.mutant-transition').each(observer.mutate);
-  document.addEventListener("load", function(){
-    observer.observe(document, {subtree: true,
+  $('.mutant-transition').each(window.observer.mutate);
+
+  $(function(){
+    window.observer.observe(document, {subtree: true,
       attributes: true,
       childList: true,
       characterData: true
     });
   });
+
 
 }
