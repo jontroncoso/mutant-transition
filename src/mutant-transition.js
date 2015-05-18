@@ -18,6 +18,7 @@ if(typeof window.MutationObserver == 'function')
     var $mutant = $(mutant);
     var $clone;
     var cssAttr = {};
+    var mutantAttributes = [];
 
     //console.log($mutant);
     //console.log('BOOM! %o | %o ', $mutant.data('moving'), $mutant.data('mutant-attributes'));
@@ -25,10 +26,11 @@ if(typeof window.MutationObserver == 'function')
 
     $clone = $mutant.clone();
     $clone.attr('id', '').addClass('mutant-clone').attr('style', '').insertAfter($mutant);
-    $.each($mutant.data('mutant-attributes').split(','), function(i,e){
+    mutantAttributes = $mutant.data('mutant-attributes').split(',');
+    $.each(mutantAttributes, function(i,e){
       var attribute = e.trim();
       var attrMethod = attribute;
-      if(attrMethod == 'height' || attrMethod == 'width')attrMethod = $.camelCase('outer-' + attrMethod);
+      if((attrMethod == 'height' || attrMethod == 'width') && mutantAttributes.indexOf('padding') !== -1)attrMethod = $.camelCase('outer-' + attrMethod);
       if(attribute != attrMethod && typeof $clone[attrMethod] == 'function')cssAttr[attribute] = $clone[attrMethod]();
       if(attribute == attrMethod && typeof $clone.css(attrMethod) != 'undefined')cssAttr[attribute] = $clone.css(attrMethod);
     });
@@ -36,9 +38,12 @@ if(typeof window.MutationObserver == 'function')
     $mutant.css(cssAttr);
   };
   $('.mutant-transition').each(observer.mutate);
-  observer.observe(document, {subtree: true,
-    attributes: true,
-    childList: true,
-    characterData: true
+  document.addEventListener("load", function(){
+    observer.observe(document, {subtree: true,
+      attributes: true,
+      childList: true,
+      characterData: true
+    });
   });
+
 }

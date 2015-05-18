@@ -3,21 +3,24 @@
 <html lang="en">
 <head>
     <style>
-        p {
-            -webkit-transition: font-size 0.5s, padding 0.5s, height 0.5s;
-            -moz-transition:    font-size 0.5s, padding 0.5s, height 0.5s;
-            -ms-transition:     font-size 0.5s, padding 0.5s, height 0.5s;
-            -o-transition:      font-size 0.5s, padding 0.5s, height 0.5s;
-            transition:         font-size 0.5s, padding 0.5s, height 0.5s;
+        .example {
+            -webkit-transition: height 0.5s;
+            -moz-transition:    height 0.5s;
+            -ms-transition:     height 0.5s;
+            -o-transition:      height 0.5s;
+            transition:         height 0.5s;
 
             background-color: #666666;
             color: #FFFFFF;
+            width: 46%;
+            padding: 1%;
+            margin: 1%;
+            display: inline-block;
         }
-        .super-size {
-            font-size: 36px;
-            padding: 50px;
+        .example-container {
+            height: 100px;
         }
-        .shorty {
+        .parent-height {
             height: 100%;
         }
     </style>
@@ -25,19 +28,25 @@
 </head>
 
 <body>
-    <div style="height: 100px;">
 
-        <p class="mutant-transition" data-mutant-attributes="padding,height,font-size">
-            This is an example
-        </p>
+
+    <div class="example-container">
+
+        <div class="example mutant-transition" data-mutant-attributes="height,font-size">
+            This is an example with mutant-transition
+        </div><div class="example">
+            This is an example without mutant-transition
+        </div>
     </div>
     <a href="#" class="toggle-size">Toggle Size</a>
+    <p>mutant-transition works with anything. you can even inspect element and change the classes (try 'parent-height') and it will detect those changes</p>
     <script src="../src/mutant-transition.js"></script>
     <!-- This is just needed for the example -->
     <script>
         $('.toggle-size').click(function(){
-           $('.mutant-transition').toggleClass('shorty');
+           $('.example').toggleClass('parent-height');
         });
+
     </script>
 </body>
 </html>
