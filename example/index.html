@@ -2,8 +2,15 @@
 
 <html lang="en">
 <head>
+
     <style>
-        .example {
+        pre {
+            padding: 15px;
+            background: #CCCCCC;
+            color: #000000;
+            font-family: "Source Code Pro", Monaco, monospace;
+        }
+        .example-height {
             -webkit-transition: height 0.5s;
             -moz-transition:    height 0.5s;
             -ms-transition:     height 0.5s;
@@ -29,25 +36,55 @@
 
 <body>
 
+    <iframe
+            style="width: 100%; height: 300px"
+            src="http://jsfiddle.net/zfwrt1d8/3/embedded/">
+    </iframe>
 
-    <div class="example-container">
 
-        <div class="example mutant-transition" data-mutant-attributes="height,font-size">
-            This is an example with mutant-transition
-        </div><div class="example">
-            This is an example without mutant-transition
-        </div>
-    </div>
-    <a href="#" class="toggle-size">Toggle Size</a>
-    <p>Since mutant-transition detects changes in the DOM, it doesn't require any special Javascript methods. Just change the DOM how you prefer. You can even "inspect element" and change the classes (try 'parent-height') and it will detect those changes</p>
-    <script src="../src/mutant-transition.js"></script>
+
+
+    <style>
+        ul.example-children {
+            -webkit-transition: height 0.5s;
+            -moz-transition:    height 0.5s;
+            -ms-transition:     height 0.5s;
+            -o-transition:      height 0.5s;
+            transition:         height 0.5s;
+
+            display: block;
+            background: #666666;
+            color: #FFFFFF;
+            padding: 15px;
+
+        }
+        ul.example-children li {
+
+            display: block;
+            height: 30px;
+            margin: 10px;
+            font-size: 30px;
+        }
+    </style>
+    <ul class="example-children" data-mutant-attributes="height">
+        <li>Example</li>
+    </ul>
+    <a href="#" class="add-children">Add List Items</a>
+    <a href="#" class="remove-children">Remove List Items</a>
+
     <!-- This is just needed for the example -->
     <script>
-        $('.toggle-size').click(function(e){
-           $('.example').toggleClass('parent-height');
+        $('.add-children').click(function(e){
+            $('.example-children').prepend('<li>Example</li>');
             e.preventDefault();
         });
-
+        $('.remove-children').click(function(e){
+            $('.example-children').children().eq(0).remove();
+            e.preventDefault();
+        });
     </script>
+
+
+    <script src="../src/mutant-transition.js"></script>
 </body>
 </html>

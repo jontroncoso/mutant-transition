@@ -7,7 +7,7 @@ if(typeof window.MutationObserver == 'function')
     if(window.observer.ignore == true)return false;
     window.observer.ignore = true;
 
-    $('.mutant-transition').each(window.observer.mutate);
+    $('[data-mutant-attributes]').each(window.observer.mutate);
 
     setTimeout(function(){
       window.observer.ignore = false
@@ -37,10 +37,11 @@ if(typeof window.MutationObserver == 'function')
     $clone.remove();
     $mutant.css(cssAttr);
   };
-  $('.mutant-transition').each(window.observer.mutate);
 
   $(function(){
-    window.observer.observe(document, {subtree: true,
+    $('[data-mutant-attributes]').each(window.observer.mutate);
+    window.observer.observe(document, {
+      subtree: true,
       attributes: true,
       childList: true,
       characterData: true
