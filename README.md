@@ -1,6 +1,8 @@
 mutant-transition.js
 =====================
 Mutant Transition automatically sets the style attributes for elements when the DOM changes. This allows you to do things like transition from `height: auto` to `height: 0px`. Mutant Transition doesn't require you to use any special js methods to work with. instead it reads changes to the DOM and changes the style attributes in concert. It even detects changes done through "inspect element". 
+ - [Demonstration of transitioning from `height: auto` to `height: 100%`](https://jsfiddle.net/zfwrt1d8/4/)
+ - [Demonstration of transitioning of `height: auto` in response to changing children](https://jsfiddle.net/7vj3n5nf/1/)
 
 ## Set Up
 
@@ -18,8 +20,4 @@ I came up with this idea a couple weeks ago and kinda threw this together. Consi
 CSS computes a given element using different formulas that are depending on whats going on, (absolute-positioning, block, inline, etc..). For example, sometimes the padding is calculated as part of the height. Sometimes its considered outside the height. I need to work the different circumstances into this plugin.
 
 ### Width
-Since, its computing the elements width in pixels, I'd stay away from using width. Especially if you're using responsive design. 
-
-## Examples
- - [Demonstration of transitioning from `height: auto` to `height: 100%`](https://jsfiddle.net/zfwrt1d8/4/)
- - [Demonstration of transitioning of `height: auto` in response to changing children](https://jsfiddle.net/7vj3n5nf/1/)
+Since, its computing the elements width in pixels, I'd stay away from using width. Especially if you're using responsive design.
