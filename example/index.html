@@ -20,8 +20,8 @@
             background-color: #666666;
             color: #FFFFFF;
             width: 46%;
-            padding: 1%;
-            margin: 1%;
+            padding: 0 1%;
+            margin: 0 1%;
             display: inline-block;
         }
         .example-container {
@@ -30,21 +30,6 @@
         .parent-height {
             height: 100%;
         }
-    </style>
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-</head>
-
-<body>
-
-    <iframe
-            style="width: 100%; height: 300px"
-            src="http://jsfiddle.net/zfwrt1d8/3/embedded/">
-    </iframe>
-
-
-
-
-    <style>
         ul.example-children {
             -webkit-transition: height 0.5s;
             -moz-transition:    height 0.5s;
@@ -65,7 +50,32 @@
             margin: 10px;
             font-size: 30px;
         }
+
     </style>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+
+<body>
+
+
+    <div class="example-container">
+
+        <div class="example-height" data-mutant-attributes="height,font-size">
+            This is an example with mutant-transition
+        </div><div class="example-height">
+            This is an example without mutant-transition
+        </div>
+    </div>
+    <a href="#" class="toggle-size">Toggle Size</a>
+    <script>
+        $('.toggle-size').click(function(e){
+            $('.example-height').toggleClass('parent-height');
+            e.preventDefault();
+        });
+    </script>
+    <p>Since mutant-transition detects changes in the DOM, it doesn't require any special Javascript methods. Just change the DOM how you prefer. You can even "inspect element" and change the classes (try 'parent-height') and it will detect those changes</p>
+
+
     <ul class="example-children" data-mutant-attributes="height">
         <li>Example</li>
     </ul>

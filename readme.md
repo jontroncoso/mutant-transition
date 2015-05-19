@@ -5,7 +5,8 @@ Mutant Transition automatically sets the style attributes for elements when the 
 ## [DEMONSTRATION](https://jsfiddle.net/zfwrt1d8/3/)
 
 Mutant Transition leverages [Mutation Observer](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) ([IE11+](http://caniuse.com/#feat=mutationobserver)). Because of this, Mutant Transition requires minimal setup. You simply add the appropriate data-attributes (`data-mutant-attributes="height,width"`, for example), include my script, ( https://cdn.rawgit.com/jontroncoso/mutant-transition/master/src/mutant-transition.js), and mutant-transition takes care of the rest. As you manipulate the DOM using classes and moving elements around, Mutant Transition quickly makes a copy of the element and uses those measurements to set the style-attributes (`style="width: 100px; height: 758px`, if we're sticking with the same example).
-```<div class="example" data-mutant-attributes="height,font-size">
+```html
+<div class="example" data-mutant-attributes="height,font-size">
             This is an example with mutant-transition
         </div>
 ```
