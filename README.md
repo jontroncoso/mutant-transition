@@ -21,4 +21,5 @@ CSS computes a given element using different formulas that are depending on what
 Since, its computing the elements width in pixels, I'd stay away from using width. Especially if you're using responsive design. 
 
 ## Examples
- - [Demonstration of transitioning from height: auto to `height: 100%`](https://jsfiddle.net/zfwrt1d8/3/)
+ - [Demonstration of transitioning from `height: auto` to `height: 100%`](https://jsfiddle.net/zfwrt1d8/4/)
+ - [Demonstration of transitioning of `height: auto` in response to changing children](https://jsfiddle.net/7vj3n5nf/1/)
